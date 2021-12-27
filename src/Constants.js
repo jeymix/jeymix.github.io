@@ -1,0 +1,1 @@
+export const CITIES_LIST_API = 'https://api.hh.ru/areas';
