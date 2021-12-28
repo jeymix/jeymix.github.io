@@ -48,6 +48,7 @@ class City extends Component {
 		const {
 			setCity,
 		} = this.props;
+		console.log('%cprops %o', 'color: OrangeRed; font-size: 20px', this.props);
 
 		setCity(city.name);
 	}
