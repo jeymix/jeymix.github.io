@@ -11,7 +11,7 @@ class City extends Component {
 		this.state = {
 			areas: null,
 			cities: null,
-			city: null,
+			// city: null,
 		};
 	}
 
@@ -45,18 +45,24 @@ class City extends Component {
 	}
 
 	handlePickCity = (city) => {
-		this.setState({
-			city: city.name,
-		})
+		const {
+			setCity,
+		} = this.props;
+
+		setCity(city.name);
 	}
 
 	render() {
 		const {
 			areas,
 			cities,
-			city,
+			// city,
 		} = this.state;
 
+		const {
+			city,
+		} = this.props;
+		
 		return (
 			<>
 				{city ?

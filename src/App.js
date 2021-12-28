@@ -1,30 +1,36 @@
-import Accordion from 'react-bootstrap/Accordion'
+import { useState } from 'react';
+import Accordion from 'react-bootstrap/Accordion';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import City from './components/City';
+import CityInfo from './components/CityInfo';
 
 function App() {
-  return (
-      <Accordion defaultActiveKey="0">
-        <Accordion.Item eventKey="0">
-          <Accordion.Header>Выбор города</Accordion.Header>
-          <Accordion.Body>
-            <City />
-          </Accordion.Body>
-        </Accordion.Item>
-        <Accordion.Item eventKey="1">
-          <Accordion.Header>Accordion Item #2</Accordion.Header>
-          <Accordion.Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-            est laborum.
-          </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
-  );
+	const [city, setCity] = useState('');
+	return (
+		<Accordion defaultActiveKey="0">
+			<Accordion.Item eventKey="0">
+				<Accordion.Header>Выбор города</Accordion.Header>
+				<Accordion.Body>
+					<City
+						setCity={setCity}
+						city={city}
+					/>
+				</Accordion.Body>
+			</Accordion.Item>
+			{
+				city &&
+				<Accordion.Item eventKey="1">
+					<Accordion.Header>Информация из открытых источников</Accordion.Header>
+					<Accordion.Body>
+						<CityInfo
+							city={city}
+						/>
+					</Accordion.Body>
+				</Accordion.Item>
+			}
+
+		</Accordion>
+	);
 }
 
 export default App;
